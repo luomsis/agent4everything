@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(go mod tidy:*)",
+      "Bash(go get:*)",
+      "Bash(go list:*)",
+      "Read(//Users/luoms/go/pkg/mod/github.com/cloudwego/eino@v0.5.2/**)",
+      "Bash(go run:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)",
+      "Bash(go build:*)",
+      "Bash(curl:*)",
+      "Bash(go doc:*)",
+      "Bash(lsof:*)",
+      "Bash(kill:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
