@@ -1,12 +1,11 @@
 import os
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
-from langchain_community.chat_models import ChatDeepSeek
 from langchain.schema import HumanMessage, SystemMessage
 from typing import Dict, List, Any
 import logging
 import re
 
-from ..models.llm_config import LLMConfig, LLMProvider
+from models.llm_config import LLMConfig, LLMProvider
 
 logger = logging.getLogger(__name__)
 
@@ -58,9 +57,9 @@ class LLMService:
                 if not self.config.deepseek_api_key:
                     raise ValueError("DeepSeek API key is required")
 
-                return ChatDeepSeek(
-                    deepseek_api_key=self.config.deepseek_api_key,
-                    model=self.config.deepseek_model,
+                return ChatOpenAI(
+                    openai_api_key=self.config.deepseek_api_key,
+                    model_name=self.config.deepseek_model,
                     temperature=self.config.temperature,
                     max_tokens=self.config.max_tokens,
                     timeout=self.config.timeout,

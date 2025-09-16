@@ -6,7 +6,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List, Dict, Any
 import logging
 
-from ..models.llm_config import LLMConfig, LLMProvider
+from models.llm_config import LLMConfig, LLMProvider
 
 logger = logging.getLogger(__name__)
 

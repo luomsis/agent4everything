@@ -2,47 +2,70 @@ from fastapi import APIRouter, HTTPException
 from typing import Dict, Any
 import logging
 
-from ..models.schemas import QueryRequest, QueryResponse
-from ..services.database_service import DatabaseService
-from ..services.rag_service import RAGService
-from ..services.llm_service import LLMService
+from models.schemas import QueryRequest, QueryResponse
+from services.database_service import DatabaseService
+from services.rag_service import RAGService
+from services.llm_service import LLMService
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1", tags=["query"])
 
-# Initialize services
-db_service = DatabaseService()
-rag_service = RAGService()
-llm_service = LLMService()
+# Services will be initialized lazily
+db_service = None
+rag_service = None
+llm_service = None
 
-# Initialize SQLite database if needed
-if db_service.db_type == "sqlite":
-    db_service.initialize_sqlite_database()
+def get_db_service():
+    global db_service
+    if db_service is None:
+        db_service = DatabaseService()
+        # Initialize SQLite database if needed
+        if db_service.db_type == "sqlite":
+            db_service.initialize_sqlite_database()
+    return db_service
 
-# Load schema and initialize RAG
-schema = db_service.get_schema()
-rag_service.add_database_documentation(schema)
+def get_rag_service():
+    global rag_service
+    if rag_service is None:
+        rag_service = RAGService()
+    return rag_service
+
+def get_llm_service():
+    global llm_service
+    if llm_service is None:
+        llm_service = LLMService()
+    return llm_service
+
+# Schema will be loaded lazily
+schema = None
+
+def get_schema():
+    global schema
+    if schema is None:
+        schema = get_db_service().get_schema()
+        get_rag_service().add_database_documentation(schema)
+    return schema
 
 @router.post("/query", response_model=QueryResponse)
 async def process_query(request: QueryRequest) -> QueryResponse:
     """Process natural language query and return SQL results"""
     try:
         # Get context from RAG
-        context = rag_service.get_query_context(request.natural_language_query, schema)
+        context = get_rag_service().get_query_context(request.natural_language_query, get_schema())
 
         # Generate SQL query
-        sql_query = await llm_service.generate_sql_query(
+        sql_query = await get_llm_service().generate_sql_query(
             request.natural_language_query, context
         )
 
         # Execute query safely
-        if not db_service.is_safe_query(sql_query):
+        if not get_db_service().is_safe_query(sql_query):
             raise HTTPException(status_code=400, detail="Generated query is not safe")
 
-        results = db_service.execute_query(sql_query)
+        results = get_db_service().execute_query(sql_query)
 
         # Explain results
-        explanation = await llm_service.explain_results(
+        explanation = await get_llm_service().explain_results(
             sql_query, results, request.natural_language_query
         )
 
