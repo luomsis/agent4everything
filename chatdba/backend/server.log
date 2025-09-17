@@ -1,0 +1,214 @@
+INFO:     Will watch for changes in these directories: ['/Users/luoms/workspace/code/agent4everything/chatdba/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [98244] using WatchFiles
+INFO:     Started server process [98280]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:57811 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57876 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57920 - "GET /api/v1/health HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/luoms/workspace/code/agent4everything/chatdba/backend/routers/query_router.py", line 98, in health_check
+    "database_connected": db_service.test_connection(),
+AttributeError: 'NoneType' object has no attribute 'test_connection'
+INFO:     127.0.0.1:57955 - "GET /api/v1/schema HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py", line 292, in app
+    content = await serialize_response(
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py", line 155, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'dict_type', 'loc': ('response',), 'msg': 'Input should be a valid dictionary', 'input': None, 'url': 'https://errors.pydantic.dev/2.11/v/dict_type'}
+
+WARNING:  WatchFiles detected changes in 'routers/query_router.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [98280]
+INFO:     Started server process [99448]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers/query_router.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [99448]
+INFO:     Started server process [99557]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+LLM initialization failed: `ChatOpenAI` is not fully defined; you should define `BaseCache`, then call `ChatOpenAI.model_rebuild()`.
+
+For further information visit https://errors.pydantic.dev/2.11/u/class-not-fully-defined
+INFO:     127.0.0.1:58178 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58218 - "GET / HTTP/1.1" 200 OK
+/Users/luoms/workspace/code/agent4everything/chatdba/backend/services/rag_service.py:90: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
+  self.vector_store = Chroma(
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+RAG search failed: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+RAG search failed: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+LLM initialization failed: `ChatOpenAI` is not fully defined; you should define `BaseCache`, then call `ChatOpenAI.model_rebuild()`.
+
+For further information visit https://errors.pydantic.dev/2.11/u/class-not-fully-defined
+Query processing failed: `ChatOpenAI` is not fully defined; you should define `BaseCache`, then call `ChatOpenAI.model_rebuild()`.
+
+For further information visit https://errors.pydantic.dev/2.11/u/class-not-fully-defined
+/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py:191: RuntimeWarning: coroutine 'get_schema' was never awaited
+  return await dependant.call(**values)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     127.0.0.1:58354 - "POST /api/v1/query HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'routers/query_router.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [99557]
+INFO:     Started server process [649]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/Users/luoms/workspace/code/agent4everything/chatdba/backend/services/rag_service.py:90: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
+  self.vector_store = Chroma(
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to add documentation: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+INFO:     127.0.0.1:58433 - "GET /api/v1/schema HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/uvicorn/protocols/http/httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/luoms/workspace/code/agent4everything/chatdba/backend/routers/query_router.py", line 91, in get_schema_endpoint
+    return get_schema()
+  File "/Users/luoms/workspace/code/agent4everything/chatdba/backend/routers/query_router.py", line 46, in get_schema
+    get_rag_service().add_database_documentation(schema)
+  File "/Users/luoms/workspace/code/agent4everything/chatdba/backend/services/rag_service.py", line 165, in add_database_documentation
+    self.vector_store.add_documents(split_docs)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/langchain_core/vectorstores/base.py", line 287, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/langchain_community/vectorstores/chroma.py", line 277, in add_texts
+    embeddings = self._embedding_function.embed_documents(texts)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/langchain_openai/embeddings/base.py", line 588, in embed_documents
+    return self._get_len_safe_embeddings(texts, engine=engine)
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/langchain_openai/embeddings/base.py", line 483, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/luoms/miniconda3/envs/langchain/lib/python3.10/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+WARNING:  WatchFiles detected changes in 'routers/query_router.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [649]
+INFO:     Started server process [997]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/Users/luoms/workspace/code/agent4everything/chatdba/backend/services/rag_service.py:90: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
+  self.vector_store = Chroma(
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to add documentation: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+INFO:     127.0.0.1:58532 - "GET /api/v1/schema HTTP/1.1" 200 OK
+RAG search failed: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+RAG search failed: Error code: 404 - {'error_msg': 'Not Found. Please check the configuration.'}
+LLM initialization failed: `ChatOpenAI` is not fully defined; you should define `BaseCache`, then call `ChatOpenAI.model_rebuild()`.
+
+For further information visit https://errors.pydantic.dev/2.11/u/class-not-fully-defined
+Query processing failed: `ChatOpenAI` is not fully defined; you should define `BaseCache`, then call `ChatOpenAI.model_rebuild()`.
+
+For further information visit https://errors.pydantic.dev/2.11/u/class-not-fully-defined
+INFO:     127.0.0.1:58579 - "POST /api/v1/query HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59449 - "OPTIONS /api/v1/query HTTP/1.1" 400 Bad Request

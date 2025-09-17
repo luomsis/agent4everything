@@ -1,2 +1,3 @@
 ./chatdba/backend/data
 ./chatdba/backend/venv
+**/__pycache__/
